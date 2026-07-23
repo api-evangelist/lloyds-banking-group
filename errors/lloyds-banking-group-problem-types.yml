@@ -1,0 +1,96 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  Derived from the 4xx/5xx responses across openapi/obie-payment-initiation-openapi.yaml,
+  openapi/obie-account-info-openapi.yaml, openapi/obie-confirmation-funds-openapi.yaml,
+  openapi/obie-vrp-openapi.yaml (OBIE Read/Write API Standard 4.0.1), enriched with
+  the OBIE UK.OBIE.* error-code namespace from the Open Banking standard.
+format: obie-error-response
+envelope:
+  media_type: application/json
+  schema: OBErrorResponse1
+  fields:
+    Id: Unique reference for the error instance, for audit/support (max 40 chars).
+    Code: High-level textual error code (deprecated in favour of per-error ErrorCode).
+    Message: Brief error message (deprecated).
+    Errors: Array of OBError1 detail items.
+  detail_item: OBError1
+  detail_fields:
+    ErrorCode: Machine-readable code from the UK.OBIE.* namespace (required).
+    Message: Human description of what went wrong (max 500).
+    Path: Optional JSON Path to the offending field (e.g. Data.Initiation.InstructedAmount.Currency).
+    Url: Optional link to remediation/reference documentation.
+http_problems:
+  - status: 400
+    title: Bad request
+    description: Request failed validation; see Errors[] for field-level ErrorCode/Path.
+  - status: 401
+    title: Unauthorized
+    description: Missing, expired, or invalid access token / consent authorisation.
+  - status: 403
+    title: Forbidden
+    description: Token or consent lacks the scope/permission for the requested resource.
+  - status: 404
+    title: Not found
+    description: Referenced resource (account, consent, payment) does not exist.
+  - status: 405
+    title: Method not allowed
+    description: HTTP method not supported on this resource.
+  - status: 406
+    title: Not acceptable
+    description: Requested representation (Accept header) cannot be produced.
+  - status: 409
+    title: Conflict
+    description: Resource state conflict (e.g. consent already consumed or revoked).
+  - status: 415
+    title: Unsupported media type
+    description: Request Content-Type is not supported by the endpoint.
+  - status: 422
+    title: Unprocessable entity
+    description: Well-formed request that fails business-rule validation (e.g. insufficient funds, invalid payment date).
+  - status: 429
+    title: Too many requests
+    description: Per-TPP rate limit exceeded; back off and retry.
+  - status: 500
+    title: Internal server error
+    description: Unexpected ASPSP-side failure.
+obie_error_codes:
+  namespace: UK.OBIE.*
+  note: >-
+    OBIE-standard machine-readable ErrorCode values returned in OBError1.ErrorCode.
+    Representative set from the Open Banking Read/Write standard (not Lloyds-proprietary).
+  codes:
+    - code: UK.OBIE.Field.Missing
+      meaning: A required field was not supplied.
+    - code: UK.OBIE.Field.Invalid
+      meaning: A field value failed format/type validation.
+    - code: UK.OBIE.Field.Unexpected
+      meaning: An unexpected field was supplied.
+    - code: UK.OBIE.Field.InvalidDate
+      meaning: A date field was invalid or out of range.
+    - code: UK.OBIE.Header.Missing
+      meaning: A required header (e.g. x-fapi-financial-id, x-idempotency-key) was absent.
+    - code: UK.OBIE.Header.Invalid
+      meaning: A header value was malformed.
+    - code: UK.OBIE.Resource.NotFound
+      meaning: The referenced resource does not exist.
+    - code: UK.OBIE.Resource.InvalidConsentStatus
+      meaning: The consent is not in a state that permits the operation.
+    - code: UK.OBIE.Resource.InvalidFormat
+      meaning: The resource representation was invalid.
+    - code: UK.OBIE.Resource.ConsentMismatch
+      meaning: Request does not match the authorised consent.
+    - code: UK.OBIE.Rules.FailsControl
+      meaning: Request breaches an OBIE business-control rule.
+    - code: UK.OBIE.Rules.ResourceAlreadyExists
+      meaning: A resource with the same idempotency key already exists.
+    - code: UK.OBIE.Signature.Invalid
+      meaning: The x-jws-signature detached JWS failed verification.
+    - code: UK.OBIE.Signature.Missing
+      meaning: A required x-jws-signature header was absent.
+    - code: UK.OBIE.Unsupported.Frequency
+      meaning: The requested standing-order/VRP frequency is not supported.
+    - code: UK.OBIE.Unsupported.Currency
+      meaning: The requested currency is not supported.
+    - code: UK.OBIE.UnexpectedError
+      meaning: An unclassified server-side error occurred.

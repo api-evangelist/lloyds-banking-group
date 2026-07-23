@@ -1,0 +1,37 @@
+# Lloyds Banking Group
+
+> Lloyds Banking Group is one of the UK's CMA9 banks, publishing UK Open Banking (OBIE / PSD2) APIs through a public developer portal at developer.lloydsbanking.com across the Lloyds Bank, Halifax, and Bank of Scotland brands. It exposes unauthenticated Open Data reference APIs and the FAPI-secured Read/Write family (Account Information, Payment Initiation, Confirmation of Funds, Variable Recurring Payments, and Event Notifications), all conformant to the OBIE Read/Write API Standard.
+
+## APIs
+
+- [Open Data API](https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds): Public, unauthenticated reference data - ATMs, branches, personal/business current accounts, unsecured SME loans, commercial credit cards. Confirmed live at https://api.lloydsbank.com/open-banking/v2.2.
+- [Account and Transaction Information (AIS)](https://developer.lloydsbanking.com/prod01/lbg/products): Consented read access to accounts, balances, transactions, beneficiaries, standing orders, direct debits, statements. FAPI-secured.
+- [Payment Initiation (PIS)](https://developer.lloydsbanking.com/prod01/lbg/products): Domestic, scheduled, standing-order, international, and file/bulk payments with PSU authorisation.
+- [Confirmation of Funds (CBPII)](https://developer.lloydsbanking.com/prod01/lbg/products): Check whether funds are available on a customer account.
+- [Variable Recurring Payments (VRP)](https://developer.lloydsbanking.com/prod01/lbg/products): Consent-based recurring and sweeping payments under a customer mandate.
+- [Event Notifications](https://developer.lloydsbanking.com/prod01/lbg/products): Real-time push (callback) and aggregated-polling event delivery to registered TPPs.
+
+## Specs
+
+- [Open Data OpenAPI (Swagger 2.0)](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/openapi/obie-opendata-swagger.json)
+- [Account and Transaction Information (OpenAPI 3.0)](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/openapi/obie-account-info-openapi.yaml)
+- [Payment Initiation (OpenAPI 3.0)](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/openapi/obie-payment-initiation-openapi.yaml)
+- [Confirmation of Funds (OpenAPI 3.0)](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/openapi/obie-confirmation-funds-openapi.yaml)
+- [Variable Recurring Payments (OpenAPI 3.0)](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/openapi/obie-vrp-openapi.yaml)
+
+## Artifacts
+
+- [Authentication profile](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/authentication/lloyds-banking-group-authentication.yml): OAuth2/OIDC (FAPI), mTLS, PSD2 SCA.
+- [OAuth scopes](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/scopes/lloyds-banking-group-scopes.yml): accounts, payments, fundsconfirmations.
+- [API conventions](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/conventions/lloyds-banking-group-conventions.yml): idempotency (x-idempotency-key), pagination, request tracing (x-fapi-interaction-id), error envelope.
+- [Error catalogue](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/errors/lloyds-banking-group-problem-types.yml): OBIE UK.OBIE.* error codes.
+- [Conformance](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/conformance/lloyds-banking-group-conformance.yml): FAPI, PSD2, OAuth2/OIDC, mTLS, OBIE Read/Write.
+- [Event notifications / webhooks](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/asyncapi/lloyds-banking-group-event-notifications-webhooks.yml).
+- [Data model](https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/data-model/lloyds-banking-group-data-model.yml).
+
+## Docs
+
+- [Developer portal](https://developer.lloydsbanking.com/prod01/lbg/home)
+- [Getting started](https://developer.lloydsbanking.com/prod01/lbg/get-started)
+- [Product catalogue](https://developer.lloydsbanking.com/prod01/lbg/products)
+- [Support](https://developer.lloydsbanking.com/prod01/lbg/support)

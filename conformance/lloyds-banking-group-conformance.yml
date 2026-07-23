@@ -1,0 +1,48 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  Derived from OpenAPI securitySchemes, headers, and error shapes across the OBIE
+  Read/Write specs, plus the CMA9 / PSD2 / OBIE regulatory context documented in
+  apis.yml and review.yml.
+standards:
+  - id: oauth2
+    conforms: true
+    evidence: securitySchemes TPPOAuth2Security (clientCredentials) and PSUOAuth2Security (authorizationCode).
+  - id: oidc
+    conforms: true
+    evidence: OpenID Connect used for PSU authentication under the OBIE FAPI profile.
+  - id: fapi-1.0-advanced
+    conforms: true
+    evidence: >-
+      OBIE Read/Write API Standard mandates FAPI 1.0 Advanced - mTLS, JWS-signed
+      requests (x-jws-signature), x-fapi-* headers, and PAR/JARM per the profile.
+  - id: psd2
+    conforms: true
+    evidence: >-
+      Payment Initiation (PIS), Account Information (AIS), and Confirmation of Funds
+      (CBPII) services with PSD2 Strong Customer Authentication.
+  - id: obie-read-write-4.0
+    conforms: true
+    evidence: Specs are the OBIE Read/Write API Standard v4.0.1 documents, harvested verbatim.
+  - id: obie-open-data
+    conforms: true
+    evidence: Open Data API v2.2/v1.3 confirmed live (HTTP 200) at api.lloydsbank.com.
+  - id: mutual-tls
+    conforms: true
+    evidence: mTLS client authentication with OBIE/eIDAS certificates required on all Read/Write endpoints.
+  - id: message-signing-jws
+    conforms: true
+    evidence: Detached JWS (x-jws-signature) over payment/file request and response bodies.
+  - id: hateoas-pagination
+    conforms: true
+    evidence: Collections return Links (Self/First/Prev/Next/Last) + Meta.TotalPages.
+  - id: idempotency
+    conforms: true
+    evidence: x-idempotency-key required on payment and funds-confirmation write operations.
+  - id: rfc9457-problem-details
+    conforms: false
+    evidence: Errors use the OBIE OBErrorResponse1 envelope (application/json), not application/problem+json.
+regulatory_context:
+  regulator: Financial Conduct Authority (FCA) + Prudential Regulation Authority (PRA)
+  scheme: UK Open Banking (CMA Order) - Lloyds Banking Group is one of the CMA9 mandated banks.
+  directory: Open Banking Implementation Entity (OBIE) directory registration required for TPPs.

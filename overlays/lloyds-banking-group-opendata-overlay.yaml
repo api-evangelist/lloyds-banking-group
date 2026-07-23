@@ -1,0 +1,15 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Lloyds Banking Group Open Data
+  version: 1.0.0
+extends: openapi/obie-opendata-swagger.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: lloyds-banking-group
+    x-apievangelist-standard: OBIE Read/Write API Standard
+    x-apievangelist-brands:
+    - Lloyds Bank
+    - Halifax
+    - Bank of Scotland
+    x-apievangelist-regulatory: UK Open Banking (CMA9), FCA/PRA, PSD2

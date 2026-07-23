@@ -1,0 +1,81 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  openapi/obie-account-info-openapi.yaml, openapi/obie-payment-initiation-openapi.yaml,
+  openapi/obie-confirmation-funds-openapi.yaml, openapi/obie-vrp-openapi.yaml (OBIE
+  Read/Write API Standard 4.0.1) + OBIE Read/Write API Standard conventions.
+standard: OBIE Read/Write API Standard (UK Open Banking) 4.0.1
+authentication:
+  style: OAuth2 / OpenID Connect (FAPI 1.0 Advanced)
+  transport_security: Mutual TLS (mTLS) client authentication with OBIE/eIDAS certificates
+  strong_customer_authentication: PSD2 SCA via the PSUOAuth2Security authorization-code flow
+  client_credentials: TPPOAuth2Security client-credentials flow for TPP-to-ASPSP access
+  message_signing:
+    header: x-jws-signature
+    detail: >-
+      Detached JWS signature over the request/response body for non-repudiation on
+      payment and file resources (JWS with b64=false per OBIE standard).
+  ref: authentication/lloyds-banking-group-authentication.yml
+idempotency:
+  supported: true
+  header: x-idempotency-key
+  scope: >-
+    Required on payment-initiation and funds-confirmation write operations
+    (CreateDomesticPayments, CreateInternationalPayments, CreateFilePayments,
+    domesticVrpPost, CreateFundsConfirmations, and their consent-creation
+    operations). The same x-idempotency-key replayed within the retention window
+    returns the original resource rather than creating a duplicate payment.
+  max_length: 40
+  retention: 24 hours (per OBIE Read/Write standard guidance)
+  evidence: >-
+    x-idempotency-key header parameter appears on 18 payment operations, 7 VRP
+    operations, and 3 CBPII/AIS write operations across the harvested specs.
+pagination:
+  style: cursor/link-based (HATEOAS Links object)
+  response_links: [Self, First, Prev, Next, Last]
+  meta_fields: [TotalPages, FirstAvailableDateTime, LastAvailableDateTime]
+  request_params:
+    - name: page
+      in: query
+      note: Present on transaction and statement collection endpoints.
+  detail: >-
+    Collections return a Links object with First/Prev/Next/Last hrefs and a Meta
+    object carrying TotalPages; clients follow Links.Next rather than constructing
+    offsets.
+request_tracing:
+  interaction_id_header: x-fapi-interaction-id
+  detail: >-
+    An RFC4122 UUID echoed by the ASPSP in the response for end-to-end correlation
+    and support; the FAPI standard requires it be logged on both ends.
+  related_headers:
+    - x-fapi-auth-date
+    - x-fapi-customer-ip-address
+    - x-customer-user-agent
+versioning:
+  scheme: uri-path
+  current: v4.0 (OBIE Read/Write); Open Data on v2.2/v3.x hosts
+  detail: >-
+    Major version in the path segment (e.g. /open-banking/v3.1, /open-banking/v4.0/aisp).
+    Multiple versions run in parallel during migration windows.
+  ref: lifecycle/lloyds-banking-group-lifecycle.yml
+error_envelope:
+  media_type: application/json
+  schema: OBErrorResponse1
+  shape: >-
+    Top-level { Code, Id, Message, Errors[] } where each Errors[] item is an
+    OBError1 { ErrorCode (UK.OBIE.* namespace), Message, Path, Url }. ErrorCode is
+    the machine-readable field; Code/Message at the top level are deprecated.
+  ref: errors/lloyds-banking-group-problem-types.yml
+rate_limit_signaling:
+  status_code: 429
+  detail: >-
+    All Read/Write operations declare a 429 (Too Many Requests) response. Per-TPP
+    throttling is applied by the ASPSP gateway; specific published limits are not
+    exposed in the standard specification.
+consent_model:
+  detail: >-
+    Every data or payment interaction is gated by a consent resource
+    (account-access-consent, payment-consent, funds-confirmation-consent, VRP
+    consent) that the PSU authorises via SCA before the TPP may act. Consents carry
+    an explicit status lifecycle (AwaitingAuthorisation -> Authorised -> Consumed /
+    Revoked / Rejected).

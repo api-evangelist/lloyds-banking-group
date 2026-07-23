@@ -1,0 +1,32 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  Derived from OpenAPI servers[] version paths and the OBIE Read/Write versioning
+  model; developer portal at developer.lloydsbanking.com.
+versioning:
+  scheme: uri-path
+  current: v4.0 (OBIE Read/Write); Open Data live on v2.2
+  observed_versions:
+    - /open-banking/v2.2 (Open Data - confirmed live)
+    - /open-banking/v3.1 (Read/Write, documented)
+    - /open-banking/v4.0/aisp (Account Information)
+    - /open-banking/v4.0/pisp (Payment Initiation, VRP)
+    - /open-banking/v4.0/cbpii (Confirmation of Funds)
+  detail: >-
+    Major version carried in the path segment. Multiple OBIE versions run in
+    parallel during migration windows following the Open Banking release schedule.
+deprecation:
+  policy: >-
+    Version deprecation follows the OBIE Read/Write API Standard release and
+    migration timetable rather than a Lloyds-proprietary policy. Sunset/Deprecation
+    HTTP headers (RFC 8594) are not advertised in the harvested specification.
+  sunset_header: false
+sla:
+  published: false
+  note: No public SLA/uptime target is exposed on the unauthenticated developer surface.
+status_page:
+  found: false
+  note: >-
+    No public API status page was located for the developer.lloydsbanking.com
+    Open Banking gateway (probes redirected to the portal home).
+deprecated_operations: []

@@ -1,0 +1,35 @@
+generated: '2026-07-23'
+method: searched
+source: Live probes of the API, developer-portal, and corporate hosts on 2026-07-23.
+summary: >-
+  No machine-readable /.well-known discovery documents are published on any Lloyds
+  host. The API gateway hosts return 404; the developer portal 302-redirects all
+  /.well-known paths to its home page; the corporate site returns a soft-404 HTML
+  error page (HTTP 200, text/html) for every probed path. OBIE OIDC discovery lives
+  on the per-brand FAPI authorization server behind mTLS/TPP onboarding and is not
+  anonymously reachable. Empty result recorded - no fabrication.
+hosts:
+  - host: https://api.lloydsbank.com
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/oauth-protected-resource, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /openapi.json, status: 404}
+  - host: https://api.halifax.co.uk
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+  - host: https://api.bankofscotland.co.uk
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+  - host: https://developer.lloydsbanking.com
+    documents:
+      - {path: /.well-known/security.txt, status: 302, note: redirects to portal home}
+      - {path: /.well-known/openid-configuration, status: 302, note: redirects to portal home}
+  - host: https://www.lloydsbankinggroup.com
+    documents:
+      - {path: /.well-known/security.txt, status: 200, note: soft-404 HTML error page, not a real security.txt}
+      - {path: /.well-known/openid-configuration, status: 200, note: soft-404 HTML error page}

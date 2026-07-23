@@ -1,0 +1,37 @@
+generated: '2026-07-23'
+method: searched
+source: >-
+  OBIE Event Notification API Specification (Open Banking Read/Write Standard),
+  documented as the "Events" product on developer.lloydsbanking.com/prod01/lbg/products.
+spec_type: Webhooks
+surface: OBIE Event Notifications
+description: >-
+  Lloyds Banking Group implements the OBIE Event Notification API, delivering
+  resource-update and consent-lifecycle events to registered TPPs. It offers both a
+  real-time push (callback URL) delivery mode and an aggregated polling mode, using
+  the Security Event Token (RFC 8417) format signed as a JWT.
+delivery_modes:
+  - mode: real-time-push
+    detail: >-
+      TPP registers a callback URL (event-subscription); the ASPSP POSTs a signed
+      SET (application/jwt) to that URL when an event occurs.
+    resource: /event-subscriptions
+  - mode: aggregated-polling
+    detail: >-
+      TPP polls the aggregated event endpoint to retrieve, acknowledge, and set the
+      error state of outstanding event notifications.
+    resource: /events
+event_types:
+  - urn: urn:uk:org:openbanking:events:resource-update
+    description: A resource the TPP has access to has been updated.
+  - urn: urn:uk:org:openbanking:events:consent-authorization-revoked
+    description: A PSU or ASPSP has revoked a previously authorised consent.
+  - urn: urn:uk:org:openbanking:events:account-access-consent-linked-account-update
+    description: The set of accounts linked to an account-access consent has changed.
+security:
+  signing: Security Event Token (SET) delivered as a signed JWT (JWS).
+  transport: mTLS + FAPI, same TPP onboarding as the Read/Write family.
+notes: >-
+  No standalone AsyncAPI document is published by Lloyds; this captures the webhook /
+  event catalogue from the OBIE Event Notification standard the portal implements.
+  Not fabricated - event types and delivery modes are the OBIE standard surface.

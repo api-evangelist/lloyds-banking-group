@@ -1,0 +1,117 @@
+generated: '2026-07-23'
+method: derived
+source: >-
+  Derived from OpenAPI paths, $ref links, and id-reference fields across the OBIE
+  Read/Write specs (Account Information 4.0.1, Payment Initiation 4.0.1, VRP 4.0.1,
+  Confirmation of Funds 4.0.1).
+entities:
+  - name: AccountAccessConsent
+    id_field: ConsentId
+    domain: account-information
+    description: PSU authorisation granting a TPP read access to a set of accounts and permissions.
+  - name: Account
+    id_field: AccountId
+    domain: account-information
+    description: A PSU bank account exposed under an authorised account-access consent.
+  - name: Balance
+    domain: account-information
+    description: Balance snapshot(s) for an account.
+  - name: Transaction
+    domain: account-information
+    description: A posted or booked transaction on an account.
+  - name: Beneficiary
+    domain: account-information
+  - name: StandingOrder
+    domain: account-information
+  - name: DirectDebit
+    domain: account-information
+  - name: ScheduledPayment
+    domain: account-information
+  - name: Statement
+    id_field: StatementId
+    domain: account-information
+  - name: Party
+    domain: account-information
+    description: Account holder / party details.
+  - name: DomesticPaymentConsent
+    id_field: ConsentId
+    domain: payment-initiation
+  - name: DomesticPayment
+    id_field: DomesticPaymentId
+    domain: payment-initiation
+  - name: InternationalPaymentConsent
+    id_field: ConsentId
+    domain: payment-initiation
+  - name: InternationalPayment
+    id_field: InternationalPaymentId
+    domain: payment-initiation
+  - name: FilePaymentConsent
+    id_field: ConsentId
+    domain: payment-initiation
+  - name: FilePayment
+    id_field: FilePaymentId
+    domain: payment-initiation
+  - name: DomesticVRPConsent
+    id_field: ConsentId
+    domain: variable-recurring-payments
+  - name: DomesticVRP
+    id_field: DomesticVRPId
+    domain: variable-recurring-payments
+  - name: FundsConfirmationConsent
+    id_field: ConsentId
+    domain: confirmation-of-funds
+  - name: FundsConfirmation
+    domain: confirmation-of-funds
+relationships:
+  - from: Account
+    to: AccountAccessConsent
+    type: belongs_to
+    via: ConsentId
+  - from: Balance
+    to: Account
+    type: belongs_to
+    via: AccountId
+  - from: Transaction
+    to: Account
+    type: belongs_to
+    via: AccountId
+  - from: Beneficiary
+    to: Account
+    type: belongs_to
+    via: AccountId
+  - from: StandingOrder
+    to: Account
+    type: belongs_to
+    via: AccountId
+  - from: DirectDebit
+    to: Account
+    type: belongs_to
+    via: AccountId
+  - from: Statement
+    to: Account
+    type: belongs_to
+    via: AccountId
+  - from: DomesticPayment
+    to: DomesticPaymentConsent
+    type: belongs_to
+    via: ConsentId
+  - from: InternationalPayment
+    to: InternationalPaymentConsent
+    type: belongs_to
+    via: ConsentId
+  - from: FilePayment
+    to: FilePaymentConsent
+    type: belongs_to
+    via: ConsentId
+  - from: DomesticVRP
+    to: DomesticVRPConsent
+    type: belongs_to
+    via: ConsentId
+  - from: FundsConfirmation
+    to: FundsConfirmationConsent
+    type: belongs_to
+    via: ConsentId
+notes: >-
+  Every resource in the OBIE model is anchored to a consent (ConsentId) authorised
+  by the PSU via SCA. Account-scoped resources reference AccountId; payment resources
+  reference their consent. Id-prefix conventions are ASPSP-assigned opaque strings.
