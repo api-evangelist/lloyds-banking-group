@@ -1,0 +1,181 @@
+aid: lloyds-banking-group
+url: https://raw.githubusercontent.com/api-evangelist/lloyds-banking-group/refs/heads/main/apis.yml
+name: Lloyds Banking Group
+kind: company
+description: Lloyds Banking Group plc is the United Kingdom's largest retail and
+  commercial banking group, serving personal, business, and corporate customers
+  through the Lloyds Bank, Halifax, Bank of Scotland, MBNA, and Scottish Widows
+  brands. Formed in 2009 through the acquisition of HBOS by Lloyds TSB, it is a
+  publicly listed company on the London Stock Exchange (LLOY) and a FTSE 100
+  constituent - not a mutual or building society. It is authorised by the
+  Prudential Regulation Authority and regulated by the Financial Conduct
+  Authority and the PRA. As one of the nine CMA-mandated banks (CMA9), Lloyds
+  operates a public developer platform at developer.lloydsbanking.com that
+  publishes UK Open Banking (OBIE / PSD2) APIs - unauthenticated Open Data
+  reference APIs for ATMs, branches, and product information, plus the FAPI-secured
+  Read/Write family - Account and Transaction Information (AIS), Payment
+  Initiation (PIS), Confirmation of Funds (CBPII), Variable Recurring Payments
+  (VRP), and Event Notifications - conformant to the Open Banking Implementation
+  Entity (OBIE) Read/Write API Standard, secured with OAuth2/OIDC, mutual-TLS,
+  and PSD2 strong customer authentication using OBIE/eIDAS certificates.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Financial Services
+- Banking
+- Open Banking
+- PSD2
+- OBIE
+- CMA9
+- United Kingdom
+- Payments
+- Account Information
+- Open Data
+- FAPI
+created: '2026-07-23'
+modified: '2026-07-23'
+specificationVersion: '0.19'
+apis:
+- aid: lloyds-banking-group:open-data-api
+  name: Lloyds Banking Group Open Data API
+  description: Public, unauthenticated UK Open Banking Open Data API exposing
+    reference data - ATMs, branches, personal current accounts, business current
+    accounts, unsecured SME loans, and commercial credit cards - conformant to the
+    OBIE Open Data standard. Confirmed live for the Lloyds Bank brand host on
+    2026-07-23 (HTTP 200), with equivalent hosts for the Halifax and Bank of
+    Scotland brands.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Open Data
+  - ATMs
+  - Branches
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-opendata-swagger.json
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+- aid: lloyds-banking-group:account-information-api
+  name: Lloyds Banking Group Account and Transaction Information API
+  description: OBIE Read/Write Account and Transaction Information (AIS) API for
+    accessing account, balance, transaction, beneficiary, standing order, direct
+    debit, and statement data with customer consent. FAPI-secured (OAuth2/OIDC,
+    mTLS, PSD2 SCA); requires developer-portal onboarding and Open Banking directory
+    registration. Spec provenance is the shared OBIE Read/Write standard, not a
+    Lloyds-proprietary contract.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
+  baseURL: https://api.lloydsbank.com/open-banking/v3.1
+  tags:
+  - Account Information
+  - AIS
+  - Open Banking
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-account-info-openapi.yaml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+- aid: lloyds-banking-group:payment-initiation-api
+  name: Lloyds Banking Group Payment Initiation API
+  description: OBIE Read/Write Payment Initiation (PIS) API for initiating domestic,
+    scheduled, standing-order, international, and business bulk/batch payments with
+    customer authorisation. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); requires
+    developer-portal onboarding and Open Banking directory registration. Spec
+    provenance is the shared OBIE Read/Write standard, not a Lloyds-proprietary
+    contract.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
+  baseURL: https://api.lloydsbank.com/open-banking/v3.1
+  tags:
+  - Payment Initiation
+  - PIS
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-payment-initiation-openapi.yaml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+- aid: lloyds-banking-group:confirmation-of-funds-api
+  name: Lloyds Banking Group Confirmation of Funds API
+  description: OBIE Read/Write Confirmation of Funds (CBPII) API allowing an
+    authorised card-based payment instrument issuer to check whether funds are
+    available on a customer account. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA);
+    requires developer-portal onboarding and Open Banking directory registration.
+    Spec provenance is the shared OBIE Read/Write standard, not a Lloyds-proprietary
+    contract.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
+  baseURL: https://api.lloydsbank.com/open-banking/v3.1
+  tags:
+  - Confirmation of Funds
+  - CBPII
+  - Open Banking
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-confirmation-funds-openapi.yaml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+- aid: lloyds-banking-group:variable-recurring-payments-api
+  name: Lloyds Banking Group Variable Recurring Payments API
+  description: OBIE Variable Recurring Payments (VRP) profile API enabling
+    consent-based recurring payments under a customer-agreed mandate, including
+    sweeping between a customer's own accounts. FAPI-secured (OAuth2/OIDC, mTLS,
+    PSD2 SCA); requires developer-portal onboarding. Spec provenance is the shared
+    OBIE VRP standard, not a Lloyds-proprietary contract.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
+  baseURL: https://api.lloydsbank.com/open-banking/v3.1
+  tags:
+  - Variable Recurring Payments
+  - VRP
+  - Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/obie-vrp-openapi.yaml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+- aid: lloyds-banking-group:event-notifications-api
+  name: Lloyds Banking Group Event Notifications API
+  description: OBIE Event Notifications API delivering aggregated and real-time
+    event signals (e.g. consent revocation, resource-update notifications) to
+    registered TPPs. FAPI-secured; requires developer-portal onboarding. Documented
+    as a product on the Lloyds Banking Group developer portal.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
+  baseURL: https://api.lloydsbank.com/open-banking/v3.1
+  tags:
+  - Event Notifications
+  - Events
+  - Open Banking
+  properties:
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+common:
+- type: Website
+  url: https://www.lloydsbankinggroup.com/
+- type: DeveloperPortal
+  url: https://developer.lloydsbanking.com/prod01/lbg/home
+- type: GettingStarted
+  url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- type: Documentation
+  url: https://developer.lloydsbanking.com/prod01/lbg/products
+- type: GitHubOrganization
+  url: https://github.com/LloydsBanking
+- type: LinkedIn
+  url: https://www.linkedin.com/company/lloyds-banking-group
+- type: Blog
+  url: https://www.lloydsbankinggroup.com/insights.html
+- type: Support
+  url: https://developer.lloydsbanking.com/prod01/lbg/support
+- type: PrivacyPolicy
+  url: https://www.lloydsbankinggroup.com/privacy.html
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

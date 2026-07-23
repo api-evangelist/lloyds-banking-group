@@ -1,0 +1,107 @@
+aid: lloyds-banking-group
+name: Lloyds Banking Group
+review:
+  question: >-
+    Does Lloyds Banking Group expose a documented public developer portal, a
+    confirmed live Open Data endpoint, and OBIE-conformant Read/Write APIs?
+  answer: true
+  date: '2026-07-23'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Lloyds Banking Group operates a public developer portal at
+    developer.lloydsbanking.com (prod01/lbg) documenting a full UK Open Banking
+    (OBIE / PSD2) product catalogue: Open Data, Account Information, Domestic
+    Payments, International Payments, Business Banking Bulk/Batch Payments,
+    Variable Recurring Payments, Confirmation of Funds, and Events. As one of
+    the CMA9 banks it publishes the OBIE Open Data reference APIs, which were
+    CONFIRMED LIVE on 2026-07-23 (HTTP 200, JSON) at the Lloyds Bank brand host
+    https://api.lloydsbank.com/open-banking/v2.2 for /atms (1,020 results),
+    /branches (328 results), /personal-current-accounts,
+    /business-current-accounts, /unsecured-sme-loans, and
+    /commercial-credit-cards. Equivalent Open Data hosts were also confirmed
+    live for the Halifax (api.halifax.co.uk) and Bank of Scotland
+    (api.bankofscotland.co.uk) brands. The FAPI-secured Read/Write family
+    (AIS, PIS, CBPII, VRP, Events) is documented and requires developer-portal
+    onboarding plus Open Banking directory registration; its production
+    endpoints are gated (paths under the same confirmed api.lloydsbank.com
+    gateway return 404 without authentication and eIDAS/OBIE client certs) and
+    were not exercised. No Lloyds-proprietary OpenAPI contract is publicly
+    downloadable; the harvested Read/Write and Open Data specifications are the
+    shared OBIE standard documents, captured verbatim and labelled as such.
+  authModel:
+    standard: OBIE Read/Write API Standard (FAPI)
+    mechanisms:
+      - OAuth2 / OpenID Connect
+      - Mutual TLS (mTLS) client authentication
+      - PSD2 Strong Customer Authentication (SCA)
+      - Dynamic client registration with OBIE / eIDAS certificates
+    openDataAuth: none (public, unauthenticated)
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.lloydsbank.com/open-banking/v2.2
+      documented: true
+      confirmedLive: true
+      note: Open Data API. Public, unauthenticated. HTTP 200 JSON confirmed 2026-07-23.
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.lloydsbank.com/open-banking/v3.1
+      documented: true
+      confirmedLive: false
+      note: >-
+        OBIE Read/Write family (AIS/PIS/CBPII/VRP/Events). Gated behind FAPI
+        onboarding, mTLS, and PSD2 SCA; production paths return 404 to
+        unauthenticated probes.
+  openDataConfirmed:
+    - GET https://api.lloydsbank.com/open-banking/v2.2/atms
+    - GET https://api.lloydsbank.com/open-banking/v2.2/branches
+    - GET https://api.lloydsbank.com/open-banking/v2.2/personal-current-accounts
+    - GET https://api.lloydsbank.com/open-banking/v2.2/business-current-accounts
+    - GET https://api.lloydsbank.com/open-banking/v2.2/unsecured-sme-loans
+    - GET https://api.lloydsbank.com/open-banking/v2.2/commercial-credit-cards
+  specProvenance:
+    openapi/obie-opendata-swagger.json:
+      standard: OBIE Open Data (Open Banking) - shared standard, not proprietary
+      version: v1.3 (Swagger 2.0)
+      source: https://github.com/OpenBankingUK/opendata-api-spec-compiled
+    openapi/obie-account-info-openapi.yaml:
+      standard: OBIE Account and Transaction API Specification - shared standard
+      version: 4.0.1 (OpenAPI 3.0.0)
+      source: https://github.com/OpenBankingUK/read-write-api-specs
+    openapi/obie-payment-initiation-openapi.yaml:
+      standard: OBIE Payment Initiation API - shared standard
+      version: 4.0.1 (OpenAPI 3.0.0)
+      source: https://github.com/OpenBankingUK/read-write-api-specs
+    openapi/obie-confirmation-funds-openapi.yaml:
+      standard: OBIE Confirmation of Funds API Specification - shared standard
+      version: 4.0.1 (OpenAPI 3.0.0)
+      source: https://github.com/OpenBankingUK/read-write-api-specs
+    openapi/obie-vrp-openapi.yaml:
+      standard: OBIE VRP Profile - shared standard
+      version: 4.0.1 (OpenAPI 3.0.0)
+      source: https://github.com/OpenBankingUK/read-write-api-specs
+sources:
+  - url: https://developer.lloydsbanking.com/prod01/lbg/home
+    type: DeveloperPortal
+    status: 200
+    note: Lloyds Banking Group API Developer Portal home.
+  - url: https://developer.lloydsbanking.com/prod01/lbg/products
+    type: Documentation
+    status: 200
+    note: >-
+      Product catalogue - Open Data, Account Information, Domestic Payments,
+      Variable Recurring Payments, International Payments, Business Banking
+      Bulk/Batch Payments, Confirmation of Funds, Events.
+  - url: https://api.lloydsbank.com/open-banking/v2.2/atms
+    type: APIReference
+    status: 200
+    note: Confirmed live Open Data ATM endpoint, 1,020 results, JSON.
+  - url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+    type: Documentation
+    status: 200
+    note: Open Data (Lloyds Bank) documentation.
+  - url: https://github.com/OpenBankingUK/read-write-api-specs
+    type: SourceCode
+    status: 200
+    note: OBIE Read/Write standard OpenAPI specs harvested verbatim.
