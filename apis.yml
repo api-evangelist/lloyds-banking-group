@@ -20,6 +20,18 @@ description: Lloyds Banking Group plc is the United Kingdom's largest retail and
   and PSD2 strong customer authentication using OBIE/eIDAS certificates.
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
+- Financial-Services
+- Banking
+- Open Banking
+- PSD2
+- OBIE
+- CMA9
+- United Kingdom
+- Payments
+- Account Information
+- Open Data
+- FAPI
+tags_raw:
 - Financial Services
 - Banking
 - Open Banking
@@ -46,6 +58,11 @@ apis:
   humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
   baseURL: https://api.lloydsbank.com/open-banking/v2.2
   tags:
+  - Open Data
+  - ATMs
+  - Branches
+  - Product
+  tags_raw:
   - Open Data
   - ATMs
   - Branches
@@ -159,6 +176,10 @@ apis:
   humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
   baseURL: https://api.lloydsbank.com/open-banking/v3.1
   tags:
+  - Event Notifications
+  - Event
+  - Open Banking
+  tags_raw:
   - Event Notifications
   - Events
   - Open Banking
