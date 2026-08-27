@@ -47,132 +47,12 @@ created: '2026-07-23'
 modified: '2026-07-23'
 specificationVersion: '0.23'
 apis:
-- aid: lloyds-banking-group:open-data-api
-  name: Lloyds Banking Group Open Data API
-  description: Public, unauthenticated UK Open Banking Open Data API exposing
-    reference data - ATMs, branches, personal current accounts, business current
-    accounts, unsecured SME loans, and commercial credit cards - conformant to the
-    OBIE Open Data standard. Confirmed live for the Lloyds Bank brand host on
-    2026-07-23 (HTTP 200), with equivalent hosts for the Halifax and Bank of
-    Scotland brands.
-  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
-  baseURL: https://api.lloydsbank.com/open-banking/v2.2
-  tags:
-  - Open Data
-  - ATMs
-  - Branches
-  - Product
-  tags_raw:
-  - Open Data
-  - ATMs
-  - Branches
-  - Products
-  properties:
-  - type: OpenAPI
-    url: openapi/obie-opendata-swagger.json
-  - type: Overlay
-    url: overlays/lloyds-banking-group-opendata-overlay.yaml
-  - type: Documentation
-    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
-  - type: APIReference
-    url: https://developer.lloydsbanking.com/prod01/lbg/products
-- aid: lloyds-banking-group:account-information-api
-  name: Lloyds Banking Group Account and Transaction Information API
-  description: OBIE Read/Write Account and Transaction Information (AIS) API for
-    accessing account, balance, transaction, beneficiary, standing order, direct
-    debit, and statement data with customer consent. FAPI-secured (OAuth2/OIDC,
-    mTLS, PSD2 SCA); requires developer-portal onboarding and Open Banking directory
-    registration. Spec provenance is the shared OBIE Read/Write standard, not a
-    Lloyds-proprietary contract.
-  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
-  baseURL: https://api.lloydsbank.com/open-banking/v3.1
-  tags:
-  - Account Information
-  - AIS
-  - Open Banking
-  properties:
-  - type: OpenAPI
-    url: openapi/obie-account-info-openapi.yaml
-  - type: Overlay
-    url: overlays/lloyds-banking-group-account-info-overlay.yaml
-  - type: Documentation
-    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
-  - type: APIReference
-    url: https://developer.lloydsbanking.com/prod01/lbg/products
-- aid: lloyds-banking-group:payment-initiation-api
-  name: Lloyds Banking Group Payment Initiation API
-  description: OBIE Read/Write Payment Initiation (PIS) API for initiating domestic,
-    scheduled, standing-order, international, and business bulk/batch payments with
-    customer authorisation. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA); requires
-    developer-portal onboarding and Open Banking directory registration. Spec
-    provenance is the shared OBIE Read/Write standard, not a Lloyds-proprietary
-    contract.
-  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
-  baseURL: https://api.lloydsbank.com/open-banking/v3.1
-  tags:
-  - Payment Initiation
-  - PIS
-  - Payments
-  properties:
-  - type: OpenAPI
-    url: openapi/obie-payment-initiation-openapi.yaml
-  - type: Overlay
-    url: overlays/lloyds-banking-group-payment-initiation-overlay.yaml
-  - type: Documentation
-    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
-  - type: APIReference
-    url: https://developer.lloydsbanking.com/prod01/lbg/products
-- aid: lloyds-banking-group:confirmation-of-funds-api
-  name: Lloyds Banking Group Confirmation of Funds API
-  description: OBIE Read/Write Confirmation of Funds (CBPII) API allowing an
-    authorised card-based payment instrument issuer to check whether funds are
-    available on a customer account. FAPI-secured (OAuth2/OIDC, mTLS, PSD2 SCA);
-    requires developer-portal onboarding and Open Banking directory registration.
-    Spec provenance is the shared OBIE Read/Write standard, not a Lloyds-proprietary
-    contract.
-  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
-  baseURL: https://api.lloydsbank.com/open-banking/v3.1
-  tags:
-  - Confirmation of Funds
-  - CBPII
-  - Open Banking
-  properties:
-  - type: OpenAPI
-    url: openapi/obie-confirmation-funds-openapi.yaml
-  - type: Overlay
-    url: overlays/lloyds-banking-group-confirmation-funds-overlay.yaml
-  - type: Documentation
-    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
-  - type: APIReference
-    url: https://developer.lloydsbanking.com/prod01/lbg/products
-- aid: lloyds-banking-group:variable-recurring-payments-api
-  name: Lloyds Banking Group Variable Recurring Payments API
-  description: OBIE Variable Recurring Payments (VRP) profile API enabling
-    consent-based recurring payments under a customer-agreed mandate, including
-    sweeping between a customer's own accounts. FAPI-secured (OAuth2/OIDC, mTLS,
-    PSD2 SCA); requires developer-portal onboarding. Spec provenance is the shared
-    OBIE VRP standard, not a Lloyds-proprietary contract.
-  humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
-  baseURL: https://api.lloydsbank.com/open-banking/v3.1
-  tags:
-  - Variable Recurring Payments
-  - VRP
-  - Payments
-  properties:
-  - type: OpenAPI
-    url: openapi/obie-vrp-openapi.yaml
-  - type: Overlay
-    url: overlays/lloyds-banking-group-vrp-overlay.yaml
-  - type: Documentation
-    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
-  - type: APIReference
-    url: https://developer.lloydsbanking.com/prod01/lbg/products
 - aid: lloyds-banking-group:event-notifications-api
   name: Lloyds Banking Group Event Notifications API
-  description: OBIE Event Notifications API delivering aggregated and real-time
-    event signals (e.g. consent revocation, resource-update notifications) to
-    registered TPPs. FAPI-secured; requires developer-portal onboarding. Documented
-    as a product on the Lloyds Banking Group developer portal.
+  description: >-
+    OBIE Event Notifications API delivering aggregated and real-time event signals (e.g. consent revocation,
+    resource-update notifications) to registered TPPs. FAPI-secured; requires developer-portal onboarding.
+    Documented as a product on the Lloyds Banking Group developer portal.
   humanURL: https://developer.lloydsbanking.com/prod01/lbg/products
   baseURL: https://api.lloydsbank.com/open-banking/v3.1
   tags:
@@ -190,7 +70,622 @@ apis:
     url: https://developer.lloydsbanking.com/prod01/lbg/get-started
   - type: APIReference
     url: https://developer.lloydsbanking.com/prod01/lbg/products
+- aid: lloyds-banking-group:lloyds-banking-group-account-access-consents-api
+  name: Lloyds Banking Group Account Access Consents API
+  description: >-
+    The Account Access Consents API from Lloyds Banking Group — 2 operation(s) for account access consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Account Access Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-account-access-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-accounts-api
+  name: Lloyds Banking Group Accounts API
+  description: The Accounts API from Lloyds Banking Group — 2 operation(s) for accounts.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Accounts
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-accounts-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-atm-api
+  name: Lloyds Banking Group ATM API
+  description: Endpoint for getting ATM data
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - ATM
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-atm-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-balances-api
+  name: Lloyds Banking Group Balances API
+  description: The Balances API from Lloyds Banking Group — 2 operation(s) for balances.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Balances
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-balances-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-bca-api
+  name: Lloyds Banking Group BCA API
+  description: Endpoint for getting Business Current Account data
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - BCA
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-bca-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-beneficiaries-api
+  name: Lloyds Banking Group Beneficiaries API
+  description: The Beneficiaries API from Lloyds Banking Group — 2 operation(s) for beneficiaries.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Beneficiaries
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-beneficiaries-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-branch-api
+  name: Lloyds Banking Group Branch API
+  description: Endpoint for getting Branch data
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Branch
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-branch-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-ccc-api
+  name: Lloyds Banking Group CCC API
+  description: Endpoint for getting Commercial Credit Card data
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - CCC
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-ccc-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-direct-debits-api
+  name: Lloyds Banking Group Direct Debits API
+  description: The Direct Debits API from Lloyds Banking Group — 2 operation(s) for direct debits.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Direct Debits
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-direct-debits-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-payment-consents-api
+  name: Lloyds Banking Group Domestic Payment Consents API
+  description: >-
+    The Domestic Payment Consents API from Lloyds Banking Group — 3 operation(s) for domestic payment
+    consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-payments-api
+  name: Lloyds Banking Group Domestic Payments API
+  description: >-
+    The Domestic Payments API from Lloyds Banking Group — 3 operation(s) for domestic payments.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-scheduled-payment-consents-api
+  name: Lloyds Banking Group Domestic Scheduled Payment Consents API
+  description: >-
+    The Domestic Scheduled Payment Consents API from Lloyds Banking Group — 2 operation(s) for domestic
+    scheduled payment consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic Scheduled Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-scheduled-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-scheduled-payments-api
+  name: Lloyds Banking Group Domestic Scheduled Payments API
+  description: >-
+    The Domestic Scheduled Payments API from Lloyds Banking Group — 3 operation(s) for domestic scheduled
+    payments.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-standing-order-consents-api
+  name: Lloyds Banking Group Domestic Standing Order Consents API
+  description: >-
+    The Domestic Standing Order Consents API from Lloyds Banking Group — 2 operation(s) for domestic standing
+    order consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic Standing Order Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-standing-order-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-standing-orders-api
+  name: Lloyds Banking Group Domestic Standing Orders API
+  description: >-
+    The Domestic Standing Orders API from Lloyds Banking Group — 3 operation(s) for domestic standing
+    orders.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-vrp-consents-api
+  name: Lloyds Banking Group Domestic VRP Consents API
+  description: >-
+    The Domestic VRP Consents API from Lloyds Banking Group — 3 operation(s) for domestic vrp consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic VRP Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-vrp-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-domestic-vrps-api
+  name: Lloyds Banking Group Domestic VRPs API
+  description: The Domestic VRPs API from Lloyds Banking Group — 3 operation(s) for domestic vrps.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Domestic VRPs
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-domestic-vrps-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-file-payment-consents-api
+  name: Lloyds Banking Group File Payment Consents API
+  description: >-
+    The File Payment Consents API from Lloyds Banking Group — 3 operation(s) for file payment consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - File Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-file-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-file-payments-api
+  name: Lloyds Banking Group File Payments API
+  description: The File Payments API from Lloyds Banking Group — 4 operation(s) for file payments.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - File Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-file-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-funds-confirmation-consents-api
+  name: Lloyds Banking Group Funds Confirmation Consents API
+  description: >-
+    The Funds Confirmation Consents API from Lloyds Banking Group — 2 operation(s) for funds confirmation
+    consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Funds Confirmation Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-funds-confirmation-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-funds-confirmations-api
+  name: Lloyds Banking Group Funds Confirmations API
+  description: >-
+    The Funds Confirmations API from Lloyds Banking Group — 1 operation(s) for funds confirmations.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Funds Confirmations
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-funds-confirmations-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-international-payment-consents-api
+  name: Lloyds Banking Group International Payment Consents API
+  description: >-
+    The International Payment Consents API from Lloyds Banking Group — 3 operation(s) for international
+    payment consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - International Payment Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-international-payment-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-international-payments-api
+  name: Lloyds Banking Group International Payments API
+  description: >-
+    The International Payments API from Lloyds Banking Group — 3 operation(s) for international payments.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - International Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-international-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-international-scheduled-payments-api
+  name: Lloyds Banking Group International Scheduled Payments API
+  description: >-
+    The International Scheduled Payments API from Lloyds Banking Group — 3 operation(s) for international
+    scheduled payments.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - International Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-international-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-international-scheduled-payments-consents-api
+  name: Lloyds Banking Group International Scheduled Payments Consents API
+  description: >-
+    The International Scheduled Payments Consents API from Lloyds Banking Group — 3 operation(s) for international
+    scheduled payments consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - International Scheduled Payments Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-international-scheduled-payments-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-international-standing-orders-api
+  name: Lloyds Banking Group International Standing Orders API
+  description: >-
+    The International Standing Orders API from Lloyds Banking Group — 3 operation(s) for international
+    standing orders.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - International Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-international-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-international-standing-orders-consents-api
+  name: Lloyds Banking Group International Standing Orders Consents API
+  description: >-
+    The International Standing Orders Consents API from Lloyds Banking Group — 2 operation(s) for international
+    standing orders consents.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - International Standing Orders Consents
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-international-standing-orders-consents-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-offers-api
+  name: Lloyds Banking Group Offers API
+  description: The Offers API from Lloyds Banking Group — 2 operation(s) for offers.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Offers
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-offers-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-parties-api
+  name: Lloyds Banking Group Parties API
+  description: The Parties API from Lloyds Banking Group — 3 operation(s) for parties.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Parties
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-parties-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-pca-api
+  name: Lloyds Banking Group PCA API
+  description: Endpoint for getting Personal Current Account data
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - PCA
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-pca-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-products-api
+  name: Lloyds Banking Group Products API
+  description: The Products API from Lloyds Banking Group — 2 operation(s) for products.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-products-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-scheduled-payments-api
+  name: Lloyds Banking Group Scheduled Payments API
+  description: >-
+    The Scheduled Payments API from Lloyds Banking Group — 2 operation(s) for scheduled payments.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Scheduled Payments
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-scheduled-payments-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-sme-api
+  name: Lloyds Banking Group SME API
+  description: Endpoint for getting Unsecured SME Loan data
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - SME
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-sme-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-standing-orders-api
+  name: Lloyds Banking Group Standing Orders API
+  description: The Standing Orders API from Lloyds Banking Group — 2 operation(s) for standing orders.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Standing Orders
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-standing-orders-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-statements-api
+  name: Lloyds Banking Group Statements API
+  description: The Statements API from Lloyds Banking Group — 5 operation(s) for statements.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Statements
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-statements-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
+- aid: lloyds-banking-group:lloyds-banking-group-transactions-api
+  name: Lloyds Banking Group Transactions API
+  description: The Transactions API from Lloyds Banking Group — 2 operation(s) for transactions.
+  humanURL: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  baseURL: https://api.lloydsbank.com/open-banking/v2.2
+  tags:
+  - Transactions
+  properties:
+  - type: OpenAPI
+    url: openapi/lloyds-banking-group-transactions-api-openapi.yml
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/opendata_lloyds
+  - type: APIReference
+    url: https://developer.lloydsbanking.com/prod01/lbg/products
+  - type: Documentation
+    url: https://developer.lloydsbanking.com/prod01/lbg/get-started
 common:
+- type: Overlay
+  url: overlays/lloyds-banking-group-opendata-overlay.yaml
+- type: Overlay
+  url: overlays/lloyds-banking-group-account-info-overlay.yaml
+- type: Overlay
+  url: overlays/lloyds-banking-group-payment-initiation-overlay.yaml
+- type: Overlay
+  url: overlays/lloyds-banking-group-confirmation-funds-overlay.yaml
+- type: Overlay
+  url: overlays/lloyds-banking-group-vrp-overlay.yaml
 - type: DomainSecurity
   url: security/lloyds-banking-group-domain-security.yml
 - type: AgenticAccess
