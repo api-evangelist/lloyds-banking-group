@@ -687,6 +687,9 @@ apis:
   - type: Documentation
     url: https://developer.lloydsbanking.com/prod01/lbg/get-started
 common:
+- type: CapabilityMap
+  url: capabilities/lloyds-banking-group-capability-edges.yml
+  name: Lloyds Banking Group Business Capability Map
 - type: Overlay
   url: overlays/lloyds-banking-group-opendata-overlay.yaml
 - type: Overlay

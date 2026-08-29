@@ -1,0 +1,223 @@
+slug: lloyds-banking-group
+provider: Lloyds Banking Group
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 22
+edges:
+- tag: Domestic Payment Consents
+  spec_file: lloyds-banking-group-domestic-payment-consents-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.92
+  evidence: POST /domestic-payment-consents  Create a Domestic Payment Consent; GET .../funds-confirmation  Confirm
+    availability of funds for a Domestic Payment
+  reason: 'Open Banking Payment Initiation API: capture and authorisation of a payment instruction plus
+    funds availability check — precisely payment instruction capture, validation and authorisation.'
+- tag: Domestic Payments
+  spec_file: lloyds-banking-group-domestic-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.92
+  evidence: POST /domestic-payments  CreateDomesticPayments  Initiate a Domestic Payment
+  reason: Payment Initiation API operations that submit and retrieve domestic payment instructions and
+    their transaction status (ExternalPaymentTransactionStatus3Code) — payment initiation management.
+- tag: Domestic Scheduled Payment Consents
+  spec_file: lloyds-banking-group-domestic-scheduled-payment-consents-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.9
+  evidence: POST /domestic-scheduled-payment-consents  Create a Domestic Scheduled Payment Consent
+  reason: Consent creation/retrieval for a future-dated domestic payment instruction under the Payment
+    Initiation specification — instruction capture and authorisation.
+- tag: Domestic Scheduled Payments
+  spec_file: lloyds-banking-group-domestic-scheduled-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.9
+  evidence: POST /domestic-scheduled-payments  CreateDomesticScheduledPayments  Initiate a Domestic Scheduled
+    Payment
+  reason: Initiation and status retrieval of future-dated domestic payments via the Open Banking Payment
+    Initiation API.
+- tag: International Payments
+  spec_file: lloyds-banking-group-international-payments-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.9
+  evidence: POST /international-payments  CreateInternationalPayments  Initiate an International Payment
+  reason: Initiation and status retrieval of international (cross-border) payments, with FX/currency and
+    creditor agent schemas.
+- tag: International Payment Consents
+  spec_file: lloyds-banking-group-international-payment-consents-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.88
+  evidence: POST /international-payment-consents  Create an International Payment Consent; GET .../funds-confirmation  Confirm
+    Funds Availability for an International Payment
+  reason: Consent/authorisation stage for cross-border payment instructions in the Payment Initiation
+    API.
+- tag: International Scheduled Payments
+  spec_file: lloyds-banking-group-international-scheduled-payments-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.88
+  evidence: POST /international-scheduled-payments  Initiate an International Scheduled Payment
+  reason: Cross-border payment initiation with future-dated scheduling under the Payment Initiation spec.
+- tag: Domestic Standing Order Consents
+  spec_file: lloyds-banking-group-domestic-standing-order-consents-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /domestic-standing-order-consents  Create a Domestic Standing Order Consent
+  reason: Consent capture and authorisation for recurring standing order payment instructions (OBFrequency6Code)
+    under Payment Initiation — payment instruction capture/authorisation.
+- tag: Domestic Standing Orders
+  spec_file: lloyds-banking-group-domestic-standing-orders-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /domestic-standing-orders  Submit a Domestic Standing Order
+  reason: Submission and retrieval of recurring domestic standing order payment instructions and their
+    payment details via the Payment Initiation API.
+- tag: Domestic VRP Consents
+  spec_file: lloyds-banking-group-domestic-vrp-consents-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /domestic-vrp-consents  Create a domestic VRP consent; POST /domestic-vrp-consents/{ConsentId}/funds-confirmation  Confirm
+    Funds Availability for a Domestic VRP
+  reason: Lifecycle of Variable Recurring Payment consents (create/replace/update/delete, funds confirmation)
+    — mandate and authorisation control over payment instruction initiation.
+- tag: File Payment Consents
+  spec_file: lloyds-banking-group-file-payment-consents-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /file-payment-consents  CreateFilePaymentConsents  Create a File Payment Consent; POST
+    /file-payment-consents/{ConsentId}/file  Upload a File for a ConsentId
+  reason: 'Open Banking Payment Initiation API: capture and authorisation (consent) of a bulk/file payment
+    instruction, which is payment instruction capture, validation and authorisation.'
+- tag: File Payments
+  spec_file: lloyds-banking-group-file-payments-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.85
+  evidence: POST /file-payments  CreateFilePayments  Submit a File Payment; GET /file-payments/{FilePaymentId}/payment-details
+  reason: Submission and status tracking of bulk file payment instructions under the Payment Initiation
+    spec — payment initiation/instruction capture rather than a generic technical file upload.
+- tag: International Scheduled Payments Consents
+  spec_file: lloyds-banking-group-international-scheduled-payments-consents-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.85
+  evidence: POST /international-scheduled-payment-consents  Create an International Scheduled Payment
+    Consent
+  reason: Consent/authorisation and funds-availability check for scheduled cross-border payment instructions.
+- tag: International Standing Orders
+  spec_file: lloyds-banking-group-international-standing-orders-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.85
+  evidence: POST /international-standing-orders  Submit an International Standing Order; OBFrequency6Code
+  reason: Recurring cross-border payment instructions (international standing orders) submitted and tracked
+    via the Payment Initiation API.
+- tag: International Standing Orders Consents
+  spec_file: lloyds-banking-group-international-standing-orders-consents-api-openapi.yml
+  capability_id: BC-1340.40
+  capability_id_l1: BC-1340
+  capability_name: Cross-Border Payment Management
+  confidence: 0.83
+  evidence: POST /international-standing-order-consents  Create an International Standing Order Consent
+  reason: Consent/authorisation stage for recurring cross-border payment instructions.
+- tag: Domestic VRPs
+  spec_file: lloyds-banking-group-domestic-vrps-api-openapi.yml
+  capability_id: BC-1340.10
+  capability_id_l1: BC-1340
+  capability_name: Payment Initiation Management
+  confidence: 0.82
+  evidence: POST /domestic-vrps  domesticVrpPost  Initiate a Domestic VRP
+  reason: Initiation and status retrieval of Variable Recurring Payments under a consent — payment instruction
+    capture and authorisation; a real-time rail reading (BC-1340.50) is also arguable, hence slightly
+    reduced confidence.
+- tag: Branch
+  spec_file: lloyds-banking-group-branch-api-openapi.yml
+  capability_id: BC-1300.50
+  capability_id_l1: BC-1300
+  capability_name: Banking Channels Management
+  confidence: 0.78
+  evidence: GET /branches — "Open Data Branch API", "Latest Swagger specification for OpenData"
+  reason: Open Data branch endpoint publishes the bank's physical branch network (locations/services),
+    which is branch channel information — Banking Channels Management. Thin spec (no schemas) so confidence
+    held below 0.8.
+- tag: Products
+  spec_file: lloyds-banking-group-products-api-openapi.yml
+  capability_id: BC-1310.10
+  capability_id_l1: BC-1310
+  capability_name: Product Catalogue Management
+  confidence: 0.78
+  evidence: GET /products — "Get Products"; schemas OB_OverdraftFeeType1Code, OB_InterestRateType1Code_0,
+    OB_OtherFeeChargeDetailType
+  reason: Operations expose the bank's product definitions and their fee/interest characteristics for
+    an account and for the catalogue as a whole — banking product catalogue/master data. Fee and rate
+    schemas also touch product parameters, but the read of /products is catalogue exposure.
+- tag: PCA
+  spec_file: lloyds-banking-group-pca-api-openapi.yml
+  capability_id: BC-1310.10
+  capability_id_l1: BC-1310
+  capability_name: Product Catalogue Management
+  confidence: 0.72
+  evidence: Open Data PCA API ... GET /personal-current-accounts
+  reason: Open Data endpoint publishing the bank's personal current account product information — a public
+    banking product catalogue rather than customer account servicing.
+- tag: Parties
+  spec_file: lloyds-banking-group-parties-api-openapi.yml
+  capability_id: BC-1300.40
+  capability_id_l1: BC-1300
+  capability_name: Customer Information Management
+  confidence: 0.72
+  evidence: GET /accounts/{AccountId}/parties — "Get Parties for an AccountId"; schemas OBReadParty2,
+    PartyNumber, EmailAddress, PostCode
+  reason: Open Banking Account & Transaction API 'Parties' returns the account holder / related party
+    details (name, address, contact, party type) — i.e. banking customer information records exposed to
+    consented third parties. Best fits Banking Customer Management, specifically Customer Information
+    Management. Not KYC (no screening or due-diligence operations).
+- tag: ATM
+  spec_file: lloyds-banking-group-atm-api-openapi.yml
+  capability_id: BC-1300.50
+  capability_id_l1: BC-1300
+  capability_name: Banking Channels Management
+  confidence: 0.7
+  evidence: openapi title 'Open Data ATM API'; GET /atms
+  reason: Open Data publication of the bank's ATM estate — ATM/branch channel information, i.e. banking
+    channels management. Thin surface (one operation) limits confidence.
+- tag: CCC
+  spec_file: lloyds-banking-group-ccc-api-openapi.yml
+  capability_id: BC-1310.10
+  capability_id_l1: BC-1310
+  capability_name: Product Catalogue Management
+  confidence: 0.7
+  evidence: GET /commercial-credit-cards — "Open Data CCC API"
+  reason: UK Open Data product-reference endpoint listing commercial credit card products and their terms;
+    this is publication of the banking product catalogue. No schemas given, so confidence moderate.
